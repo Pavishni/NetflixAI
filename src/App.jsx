@@ -1,10 +1,11 @@
 import Body from "./components/Body";
 import "./index.css";
+import netflixFavicon from  "./assets/Netflix_favicon.png"
 
 function App() {
   return (
     <div>
-      <link rel="icon" href="https://cdn4.iconfinder.com/data/icons/logos-and-brands/512/227_Netflix_logo-1024.png" />
+      <link rel="icon" href={netflixFavicon} />
       <Body />
     </div>
   );
