@@ -21,7 +21,6 @@ const Login = () => {
   const email = useRef(null);
   const password = useRef(null);
   const fullName = useRef(null);
-  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const handleSubmit = () => {
@@ -50,7 +49,6 @@ const Login = () => {
               dispatch(
                 addUser({ uid: uid, email: email, displayName: displayName })
               );
-              navigate("/browse");
             })
             .catch((error) => {
               setErrorMessage(error.message);
@@ -68,19 +66,7 @@ const Login = () => {
         password?.current?.value
       )
         .then((userCredential) => {
-          // Signed in
           const user = userCredential.user;
-          updateProfile(user, {
-            displayName: fullName?.current?.value
-          })
-            .then(() => {
-              navigate("/browse");
-            })
-            .catch((error) => {
-              navigate("/error")
-            });
-          
-          // ...
         })
         .catch((error) => {
           const errorCode = error.code;
