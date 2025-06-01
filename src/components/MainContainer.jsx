@@ -3,14 +3,14 @@ import VideoBackground from "./VideoBackground";
 import VideoTitle from "./VideoTitle";
 
 const MainContainer = () => {
-  const movies = useSelector((store) => store.movies?.nowPlayingMovies);
-  if (!movies) return;
-  const mainMovie = movies[0];
-  const { original_title, overview, id } = mainMovie;
+  const series = useSelector((store) => store.movies?.trendingSeries);
+  if (!series) return;
+  const mainSeries = series[0];
+  const { original_name, overview, id } = mainSeries;
   return (
     <div>
-      <VideoTitle title={original_title} overview={overview} />
-      <VideoBackground movieId={id} />
+      <VideoTitle title={original_name} overview={overview} />
+      <VideoBackground seriesId={id} />
     </div>
   );
 };

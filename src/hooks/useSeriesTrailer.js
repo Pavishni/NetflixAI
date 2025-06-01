@@ -1,21 +1,21 @@
 import { useDispatch } from "react-redux";
-import { addTrailerVideo } from "../utils/moviesSlice";
+import { addTrailerVideoSeries } from "../utils/moviesSlice";
 import { useEffect } from "react";
 
-const useMovieTrailer = (movieId) => {
+const useSeriesTrailer = (seriesId) => {
   const dispatch = useDispatch();
-  const getMovieVideos = async () => {
+  const getSeriesVideos = async () => {
     const data = await fetch(
-      `https://vercel-tmdb-api.vercel.app/api/movies/movieVideos?movieId=${movieId}`
+      `https://vercel-tmdb-api.vercel.app/api/series/seriesVideos?seriesId=${seriesId}`
     );
     const json = await data.json();
     const filterData = json.results.filter((video) => video.type === "Trailer");
     const trailer = filterData.length ? filterData[0] : json.results[0];
-    dispatch(addTrailerVideo(trailer));
+    dispatch(addTrailerVideoSeries(trailer));
   };
   useEffect(() => {
-    getMovieVideos();
+    getSeriesVideos();
   }, []);
 };
 
-export default useMovieTrailer;
+export default useSeriesTrailer;
