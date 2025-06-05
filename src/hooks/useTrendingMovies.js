@@ -1,17 +1,21 @@
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addTrendingMovies } from "../utils/moviesSlice";
+import { trendingMovies } from "../utils/constants";
 
 const useTrendingMovies = () => {
   const dispatch = useDispatch();
+  const trendingMoviesStore = useSelector(
+    ((store) => store.movies.trendingMovies)
+  );
   const getTrendingMovies = async () => {
-    const data = await fetch(`https://vercel-tmdb-api.vercel.app/api/movies/trendingMovies`);
+    const data = await fetch(trendingMovies);
     const json = await data.json();
     dispatch(addTrendingMovies(json.results));
   };
 
   useEffect(() => {
-    getTrendingMovies();
+    !trendingMoviesStore && getTrendingMovies();
   }, []);
 };
 

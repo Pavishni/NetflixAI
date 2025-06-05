@@ -1,17 +1,21 @@
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addNowPlayingMovies } from "../utils/moviesSlice";
+import { nowPlayingMovies } from "../utils/constants";
 
 const useNowPlayingMovies = () => {
   const dispatch = useDispatch();
+  const nowPlayingMoviesStore = useSelector(
+    (store) => store.movies.nowPlayingMovies
+  );
   const getNowPlayingMovies = async () => {
-    const data = await fetch(`https://vercel-tmdb-api.vercel.app/api/movies/nowPlayingMovies`);
+    const data = await fetch(nowPlayingMovies);
     const json = await data.json();
     dispatch(addNowPlayingMovies(json.results));
   };
 
   useEffect(() => {
-    getNowPlayingMovies();
+    !nowPlayingMoviesStore && getNowPlayingMovies();
   }, []);
 };
 

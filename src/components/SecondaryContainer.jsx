@@ -3,11 +3,10 @@ import MoviesList from "./MoviesList";
 
 const SecondaryContainer = () => {
   const movies = useSelector((store) => store.movies);
-  console.log("Secondary", movies?.trendingSeries);
   return (
     movies.trendingSeries && (
       <div className="bg-black">
-        <div className="-mt-36 relative z-20">
+        <div className="-mt-36 relative z-20 mx-5">
         <MoviesList title={"Trending Shows"} movies={movies?.trendingSeries} />
         <MoviesList title={"Trending Movies"} movies={movies?.trendingMovies} />
         <MoviesList title={"Popular Shows"} movies={movies?.popularSeries} />

@@ -1,17 +1,19 @@
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addPopularSeries } from "../utils/moviesSlice";
+import { popularSeries } from "../utils/constants";
 
 const usePopularSeries = () => {
   const dispatch = useDispatch();
+  const popularSeriesStore = useSelector((store) => store.movies.popularSeries);
   const getPopularSeries = async () => {
-    const data = await fetch(`https://vercel-tmdb-api.vercel.app/api/series/popularSeries`);
+    const data = await fetch(popularSeries);
     const json = await data.json();
     dispatch(addPopularSeries(json.results));
   };
 
   useEffect(() => {
-    getPopularSeries();
+    !popularSeriesStore && getPopularSeries();
   }, []);
 };
 
