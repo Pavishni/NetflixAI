@@ -22,19 +22,19 @@ const AiSearchBar = () => {
     dispatch(addAiResults({ movieNames: result, movieResults: tmdbresults }));
   };
   return (
-    <div className="relative pt-[15%] flex justify-center">
+    <div className="relative pt-[40%] md:pt-[15%] flex justify-center">
       <form
-        className="grid grid-cols-12 w-1/2"
+        className="w-screen m-2 grid grid-cols-12 md:w-1/2"
         onSubmit={(e) => e.preventDefault()}
       >
         <input
           ref={searchText}
           type="text"
-          className="bg-white col-span-9 rounded-lg p-4 m-4 hover:border-1"
+          className="bg-white col-span-9 rounded-lg px-4 m-1 hover:border-1"
           placeholder="What would you like to watch?"
         />
         <button
-          className="bg-red-800 text-white col-span-3 rounded-lg px-4 py-2 my-4 cursor-pointer hover:border-1"
+          className="bg-red-800 text-white col-span-3 rounded-lg px-4 py-2 my-1 cursor-pointer hover:border-1"
           onClick={handleAISearch}
         >
           Search

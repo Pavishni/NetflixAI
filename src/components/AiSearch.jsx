@@ -7,7 +7,7 @@ const AiSearch = () => {
     <>
       <div className="fixed -z-10">
         <img
-          className="h-screen w-screen object-cover md:h-screen"
+          className="h-screen md:h-screen w-screen object-cover"
           src={netflixBackground}
           alt="logo"
         />

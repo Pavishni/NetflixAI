@@ -41,20 +41,20 @@ const Header = () => {
   };
 
   return (
-    <div className="w-screen absolute px-8 py-2 bg-gradient-to-b from-black z-10 flex justify-between">
-      <img className="w-44 " src={netflixLogo} alt="logo" />
+    <div className="w-screen absolute p-0 md:px-8  md:py-2 bg-gradient-to-b from-black z-10 flex justify-between">
+      <img className="w-[100px] h-[48px] md:w-44 md:h-auto" src={netflixLogo} alt="logo" />
       {user && (
-        <div className="flex p-2">
+        <div className="flex md:p-2">
           <button
-            className="px-4 py-1 mt-2 h-10 bg-red-800 text-white rounded-lg cursor-pointer"
+            className="px-3 py-1 md:px-4 md:py-2 mt-2 h-8 md:h-10 bg-red-600 text-white rounded-lg cursor-pointer"
             onClick={handleAISearch}
           >
             {aiSearch ? "Back to Home" : "AI Search"}
           </button>
-          <p className="text-white font-bold m-4 p-1">{user.displayName}</p>
-          <img className="w-12 h-12 p-1" alt="UserIcon" src={userIcon} />
+          <p className="hidden md:block m-4 p-1 text-white">{user.displayName}</p>
+          <img className="hidden md:block w-12 h-12" alt="UserIcon" src={userIcon} />
           <button
-            className="text-white font-bold cursor-pointer"
+            className="text-white font-bold cursor-pointer text-sm px-1"
             onClick={handleSignOut}
           >
             Sign Out

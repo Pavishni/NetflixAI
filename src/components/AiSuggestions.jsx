@@ -39,7 +39,7 @@ const AiSuggestions = () => {
             <img
               src={IMG_CDN + item.poster_path}
               alt={item.title || item.name}
-              className="w-48 rounded-md object-cover"
+              className="justify-center md:w-48 rounded-md object-cover"
             />
             <p className="font-extrabold">Overview:</p>
             <p className="text-gray-400 text-sm md:text-base">
